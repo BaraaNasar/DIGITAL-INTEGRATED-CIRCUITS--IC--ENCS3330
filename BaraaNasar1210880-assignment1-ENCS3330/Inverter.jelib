@@ -1,0 +1,14 @@
+# header information:
+HInverter|9.07
+
+# Views:
+Vicon|ic
+
+# Technologies:
+Tmocmos|ScaleFORmocmos()D300.0
+
+# Cell inv;2{ic}
+Cinv;2{ic}||artwork|1723739200976|1723739201061|E|IO_dummy_object()Sinv;2{ic}|IO_true_library()S16_bit_comparator_New
+Ngeneric:Facet-Center|art@0||0|0||||AV
+Ngeneric:Invisible-Pin|pin@0||0|0||||
+X

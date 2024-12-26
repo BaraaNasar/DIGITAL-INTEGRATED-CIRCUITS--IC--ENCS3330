@@ -1,0 +1,33 @@
+Circuit: *** SPICE deck for cell NLatch{sch} from library inv
+
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+.OP point found by inspection.
+
+c_out=2e-007 FROM 0 TO 2e-007
+d_out=2e-007 FROM 0 TO 2e-007
+
+
+Date: Thu Aug 22 02:49:28 2024
+Total elapsed time: 0.045 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2461
+traniter = 2461
+tranpoints = 1092
+accept = 1085
+rejected = 7
+matrix size = 9
+fillins = 0
+solver = Normal
+Matrix Compiler1: 862 bytes object code size  0.1/0.1/[0.1]
+Matrix Compiler2: 983 bytes object code size  0.1/0.1/[0.1]
+

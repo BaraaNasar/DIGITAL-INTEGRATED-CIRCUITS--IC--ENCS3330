@@ -1,0 +1,74 @@
+*** SPICE deck for cell NFF{sch} from library Assignment2
+*** Created on Mon Jan 08, 2024 12:08:33
+*** Last revised on Thu Aug 22, 2024 13:13:10
+*** Written on Thu Aug 22, 2024 17:16:20 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT Assignment2__inv FROM CELL inv{sch}
+.SUBCKT Assignment2__inv in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 out in gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 vdd in out vdd PMOS L=0.6U W=3U
+.ENDS Assignment2__inv
+
+*** SUBCIRCUIT Assignment2__NLatch FROM CELL NLatch{sch}
+.SUBCKT Assignment2__NLatch clk d out_1210880
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 out_1210880 clk d gnd NMOS L=0.6U W=3U
+Mnmos@1 net@67 net@45 out_1210880 gnd NMOS L=0.6U W=3U
+Mpmos@0 out_1210880 net@45 d vdd PMOS L=0.6U W=3U
+Mpmos@1 net@67 clk out_1210880 vdd PMOS L=0.6U W=3U
+Xinv@0 clk net@45 Assignment2__inv
+Xinv@1 out_1210880 net@49 Assignment2__inv
+Xinv@2 net@49 net@67 Assignment2__inv
+
+* Spice Code nodes in cell cell 'NLatch{sch}'
+vd clk 0 DC pwl 10n 0 20n 5 50n 5 60n 0 90n 0 100n 5 130n 5 140n 0 170n 0 180n 5
+vb d 0 DC pwl 30n 0 50n 5 120n 5 130n 0
+cload out_1210880 0 200fF
+.measure tran c_out v(out_1210880) val=4.5 fall=1 td=2ns trag v(out_1210880) val=0.5 fall=1
+.measure tran d_out v(out_1210880) val=0.5 rise=1 td=2ns trag v(out_1210880) val=4.5 rise=1
+.tran 200n
+.include C:\Users\USER\OneDrive\Documents\C5_models.txt
+.ENDS Assignment2__NLatch
+
+*** SUBCIRCUIT Assignment2__PLatch FROM CELL PLatch{sch}
+.SUBCKT Assignment2__PLatch clk d out_1210880
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 out_1210880 net@3 d gnd NMOS L=0.6U W=3U
+Mnmos@1 net@50 clk out_1210880 gnd NMOS L=0.6U W=3U
+Mpmos@0 out_1210880 clk d vdd PMOS L=0.6U W=3U
+Mpmos@1 net@50 net@3 out_1210880 vdd PMOS L=0.6U W=3U
+Xinv@1 out_1210880 net@14 Assignment2__inv
+Xinv@2 net@14 net@50 Assignment2__inv
+Xinv@3 clk net@3 Assignment2__inv
+
+* Spice Code nodes in cell cell 'PLatch{sch}'
+vd clk 0 DC pwl 10n 0 20n 5 50n 5 60n 0 90n 0 100n 5 130n 5 140n 0 170n 0 180n 5
+vb d 0 DC pwl 30n 0 50n 5 120n 5 130n 0
+cload out_1210880 0 200fF
+.measure tran c_out v(out_1210880) val=4.5 fall=1 td=2ns trag v(out_1210880) val=0.5 fall=1
+.measure tran d_out v(out_1210880) val=0.5 rise=1 td=2ns trag v(out_1210880) val=4.5 rise=1
+.tran 200n
+.include C:\Users\USER\OneDrive\Documents\C5_models.txt
+.ENDS Assignment2__PLatch
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: NFF{sch}
+XNLatch@0 clk net@58 out_1210880 Assignment2__NLatch
+XPLatch@0 clk d net@58 Assignment2__PLatch
+
+* Spice Code nodes in cell cell 'NFF{sch}'
+vd clk 0 DC pwl 10n 0 20n 5 50n 5 60n 0 90n 0 100n 5 130n 5 140n 0 170n 0 180n 5
+vb d 0 DC pwl 10n 0 20n 5 100n 5 110n 0
+cload out_1210880 50 200fF
+.measure tran c_out v(out_1210880) val=4.5 fall=1 td=2ns trag v(out_1210880) val=0.5 fall=1
+.measure tran d_out v(out_1210880) val=0.5 rise=1 td=2ns trag v(out_1210880) val=4.5 rise=1
+.tran 200n
+.include C:\Users\USER\OneDrive\Documents\C5_models.txt
+.END
